@@ -1,5 +1,9 @@
 :root {
-  --primary: #31a365;
+  --primary: #B0E1A2;
+  --secondary: #cbf5af;
+  --tertiary: #d10505bb;
+  --quaternary: #fbffdd;
+
 }
 
 * {
@@ -9,7 +13,9 @@
   font-family: Raleway, sans-serif;
 }
 
+
 body {
+  background-color: var(--quaternary);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,13 +24,14 @@ body {
 }
 
 .container-top {
-  color: #FDFDFD;
+  color: var(--quaternary);
   text-align: center;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 0.6em;
 }
 
 .container-sorteio {
+  background-color: var(--primary);
   box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.1);
   margin: 3rem auto 0;
   padding: 1.5rem;
@@ -33,8 +40,8 @@ body {
 }
 
 .container-sorteio h2 {
-  color: var(--primary);
-  border-bottom: 1px solid #CCC;
+  color: black;
+  border-bottom: 1px solid var(--quaternary);
   text-align: center;
 }
 
@@ -43,36 +50,36 @@ button {
   border: none;
   border-radius: 3px;
   transition: .4s;
-  color: #FDFDFD;
-  background-color: #31a365;
+  color: black;
+  background-color: var(--secondary);
 }
 
 button:hover {
   color: #FDFDFD;
-  background-color: #267e4d;
+  background-color: var(--tertiary);
   cursor: pointer;
   transition: 0.4s;
 }
 
-.nomes-elegiveis {
-  display: none;
-  overflow: scroll;
-  overflow-x: hidden;
-  max-height: 200px;
-  margin: 20px 0;
-  padding: 1rem;
-  text-align: center;
-}
 
 .sorteio-actions {
   display: flex;
   justify-content: center;
-
 }
 
-.sorteados {
+.sorteados-group {
   line-height: 30px;
   text-align: center;
   margin: 20px auto;
   padding: 1rem;
+}
+
+.sorteados-group ul {
+  background-color:var(--secondary);
+  box-shadow: 0px 0px 22px 0px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  position: relative;
+}
+.sorteados-group ol {
+  border-bottom: 1px solid var(--quaternary);
 }
