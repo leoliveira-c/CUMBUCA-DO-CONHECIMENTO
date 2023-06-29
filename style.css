@@ -67,10 +67,11 @@ button:hover {
   line-height: 35px;
   text-align: center;
   margin: 20px 40px;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 .sorteados-group ul {
+  margin-bottom: 20px;
   padding: 8px;
   font-size: 1.5rem;
   margin-right: 30px;
