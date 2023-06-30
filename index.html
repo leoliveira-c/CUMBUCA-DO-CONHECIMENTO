@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <title>Cumbuca do Conhecimento</title>
 </head>
 
@@ -19,10 +20,10 @@
   <header>
     <h1>Cumbuca do Conhecimento</h1>
   </header>
-  <main class="container-sorteio">
+  <main id="container-sorteio" class="animate__flipOutY">
     <h2>Sorteados da Semana</h2>
     <div class="sorteados-group">
-      <div>
+      <div class="group-1">
         <ul>Operação</ul>
         <ol>Eloy</ol>
         <ol>Caio</ol>
@@ -30,7 +31,7 @@
         <ol>Gessica</ol>
         <ol>Regin</ol>
       </div>
-      <div>
+      <div class="group-2">
         <ul>0800</ul>
         <ol>Rodrigo</ol>
         <ol>Leonardo</ol>
@@ -38,7 +39,7 @@
         <ol>Arthur</ol>
         <ol>Matias</ol>
       </div>
-      <div>
+      <div class="group-3">
         <ul>Telefonia</ul>
         <ol>Gabriel</ol>
         <ol>Victor</ol>
@@ -46,11 +47,12 @@
         <ol>Shellda</ol>
         <ol>Ludmilla</ol>
       </div>
-      <div>
+      <div clas="group-4">
         <ul>Hardware</ul>
         <ol>Tiago Sena</ol>
         <ol>Emanuel</ol>
       </div>
+      <div id="resultado" class=""></div>
     </div>
     <div class="sorteio-actions">
       <button>Sorteie aqui</button>
