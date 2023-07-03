@@ -59,7 +59,7 @@ button:hover {
   transition: 0.4s;
 }
 
-.sorteio-actions {
+#sortear-grupos {
   display: flex;
   justify-content: center;
 }
