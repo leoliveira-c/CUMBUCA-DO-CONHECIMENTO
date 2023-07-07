@@ -1,37 +1,69 @@
-document.getElementById("gruposSorteados").addEventListener("click", function () {
-    const grupos = [
-        Array.from(document.querySelectorAll(".group-1 ol")),
-        Array.from(document.querySelectorAll(".group-2 ol")),
-        Array.from(document.querySelectorAll(".group-3 ol")),
-        Array.from(document.querySelectorAll(".group-4 ol"))
-    ];
+document.addEventListener('DOMContentLoaded', function() {
+    var sortearGruposButton = document.getElementById('sortear-grupos');
+    var gruposSorteados = document.getElementById('gruposSorteados');
 
-    const gruposSorteados = [];
-    let quantidadeDuplas = Infinity;
+    sortearGruposButton.addEventListener('click', function() {
+        var grupos = document.getElementsByClassName('sorteados-group');
+        var participantesPorGrupo = [];
 
-    grupos.forEach(function (grupo) {
-        quantidadeDuplas = Math.min(quantidadeDuplas, grupo.length);
+        // Obter todos os nomes dos participantes, separados por grupo
+        for (var i = 0; i < grupos.length; i++) {
+            var olElements = grupos[i].getElementsByTagName('ol');
+            var participantes = [];
+            for (var j = 0; j < olElements.length; j++) {
+                var nome = olElements[j].innerHTML;
+                if (nome !== '') {
+                    participantes.push(nome);
+                }
+            }
+            participantesPorGrupo.push(participantes);
+        }
+
+        // Verificar se há pelo menos 2 participantes em cada grupo
+        for (var k = 0; k < grupos.length; k++) {
+            if (participantesPorGrupo[k].length < 2) {
+                alert('É necessário pelo menos 2 participantes no grupo ' + (k + 1) + ' para formar as duplas.');
+                return;
+            }
+        }
+
+        // Embaralhar a ordem dos participantes em cada grupo
+        for (var m = 0; m < participantesPorGrupo.length; m++) {
+            participantesPorGrupo[m].sort(function() { return 0.5 - Math.random() });
+        }
+
+        // Criar as duplas, garantindo que não sejam do mesmo grupo
+        var duplas = [];
+        for (var n = 0; n < participantesPorGrupo.length; n++) {
+            var grupoParticipantes = participantesPorGrupo[n];
+            while (grupoParticipantes.length >= 2) {
+                var participante1 = grupoParticipantes.shift();
+                var participante2 = null;
+                var participanteIndex = null;
+
+                for (var p = 0; p < grupoParticipantes.length; p++) {
+                    if (grupoParticipantes[p] !== participante1) {
+                        participante2 = grupoParticipantes[p];
+                        participanteIndex = p;
+                        break;
+                    }
+                }
+
+                if (participante2) {
+                    grupoParticipantes.splice(participanteIndex, 1);
+                    duplas.push([participante1, participante2]);
+                }
+            }
+        }
+
+        // Limpar a lista de grupos sorteados
+        gruposSorteados.innerHTML = '';
+
+        // Adicionar as duplas à lista de grupos sorteados
+        for (var q = 0; q < duplas.length; q++) {
+            var duplaLi = document.createElement('li');
+            duplaLi.innerHTML = duplas[q].join(' e ');
+            gruposSorteados.appendChild(duplaLi);
+        }
     });
-
-    for (let i = 0; i < quantidadeDuplas; i++) {
-        const dupla = [];
-
-        grupos.forEach(function (grupo) {
-            const pessoaIndex = Math.floor(Math.random() * grupo.length);
-            const pessoa = grupo.splice(pessoaIndex, 1)[0].textContent;
-            dupla.push(pessoa);
-        });
-
-        gruposSorteados.push(dupla);
-    }
-
-    const ulGruposSorteados = document.getElementById("gruposSorteados");
-    ulGruposSorteados.innerHTML = ""; // Limpa o conteúdo anterior
-
-    gruposSorteados.forEach(function (dupla) {
-        const liDupla = document.createElement("li");
-        liDupla.textContent = dupla.join(", ");
-        ulGruposSorteados.appendChild(liDupla);
-    });
-
 });
