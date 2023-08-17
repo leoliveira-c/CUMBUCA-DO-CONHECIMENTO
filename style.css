@@ -7,42 +7,76 @@
 }
 
 * {
+  /* Estilo padrão para todos os elementos */
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: Raleway, sans-serif;
 }
 
-
 body {
+  /* Estilos do corpo da página */
   font-size: 20px;
   background: linear-gradient(90deg, hsl(356 0% 97%) calc(20px - 2px), transparent 1%) center,
     linear-gradient(hsl(356 0% 97%) calc(20px - 2px), transparent 1%) center, hsl(356 75% 39% / .4);
   background-size: 22px 22px;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
 }
 
 #container-sorteio {
+  /* Estilos do contêiner principal */
   background-color: var(--primary);
   box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.1);
-  margin: 3rem auto 0;
-  padding: 1rem;
   border-radius: 10px;
+  max-width: 700px;
+  width: 100%;
+  padding-left: 2rem;
+}
+
+header {
+  /* Estilos para o cabeçalho (header) */
+  background-color: var(--quaternary);
+  box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+header h1 {
+  /* Estilos para o título h1 dentro do cabeçalho */
+  font-size: 2em;
+}
+
+
+.sorteados-container {
+  /* Estilos para o contêiner que envolve o título e os grupos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centralizar os elementos na horizontal */
+
 }
 
 #container-sorteio h2 {
-  font-size: 2em;
-  color: black;
-  border-bottom: 1px solid var(--quaternary);
+  /* Estilos para o título "Sorteados da Semana" */
+  font-size: 1.8em;
+  padding: 1rem;
+  width: 100%;
   text-align: center;
+  
+  /* Centralizar o título */
 }
 
 button {
+  /* Estilos para o botão "Sortear Grupos" */
   font-size: 1.2rem;
   padding: 0.5rem;
   border: none;
@@ -53,6 +87,7 @@ button {
 }
 
 button:hover {
+  /* Estilos para o botão quando o cursor está em cima */
   color: #FDFDFD;
   background-color: var(--tertiary);
   cursor: pointer;
@@ -60,32 +95,53 @@ button:hover {
 }
 
 #sortear-grupos {
+  /* Estilos para o contêiner que envolve o botão "Sortear Grupos" */
   display: flex;
   justify-content: center;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 .sorteados-group {
+  /* Estilos para o contêiner que envolve os grupos e a lista de pessoas */
   display: flex;
   flex-direction: row;
-  line-height: 35px;
+  /* Exibir os grupos lado a lado */
   text-align: center;
-  margin: 20px 40px;
-  padding: 2rem;
+  padding: 1rem;
+  gap: 20px;
+  /* Espaçamento entre os grupos */
+  flex: 1;
+  justify-content: space-between;
+  /* Espaçamento entre as duplas dentro de cada grupo */
 }
 
 .sorteados-group ul {
-  margin-bottom: 20px;
-  padding: 8px;
+  /* Estilos para a caixa que envolve o nome do grupo */
+  padding: 15px;
+  /* Corrigir o padding para 10px */
   font-size: 1.5rem;
-  margin-right: 30px;
   background-color: var(--secondary);
   box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   position: relative;
+  flex: 1;
+  /* Distribuir o espaço disponível igualmente entre os grupos */
 }
 
 .sorteados-group ol {
+  /* Estilos para os elementos da lista que contêm os nomes das pessoas */
   font-size: 1em;
-  margin-right: 30px;
+  padding: 5px;
   border-bottom: 1px solid var(--quaternary);
+}
+
+/* Media queries para ajustar o layout em diferentes tamanhos de tela */
+@media screen and (max-width: 768px) {
+  .sorteados-group {
+    flex-direction: column;
+    /* Exibir os grupos em coluna */
+    gap: 10px;
+    /* Reduzir o espaçamento entre os grupos */
+  }
 }
